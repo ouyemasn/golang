@@ -5,6 +5,7 @@ import (
 	"gopkg.in/ini.v1"
 	"log"
 	"os"
+	"time"
 )
 
 type DatabaseConf struct {
@@ -20,15 +21,15 @@ var DatabaseSetting = &DatabaseConf{}
 
 type AppConf struct {
 	Env          string
-	Port         int
-	ReadTimeout  int
-	WriteTimeout int
+	Port         string
+	ReadTimeout  time.Duration
+	WriteTimeout time.Duration
 }
 
 var AppSetting = &AppConf{}
 var cfg *ini.File
 
-func init() {
+func Setting() {
 	var err error
 	cfg, err = ini.Load("conf/main.conf")
 	if err != nil {

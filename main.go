@@ -1,7 +1,8 @@
-package main
+package main // import "git@github.com:ouyemasn/golang.git"
+
 
 import (
-	"github.com/blog/pkg/setting"
+	"./pkg/setting"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"time"

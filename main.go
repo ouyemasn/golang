@@ -1,8 +1,8 @@
 package main // import "git@github.com:ouyemasn/golang.git"
 
-
 import (
 	"./pkg/setting"
+	"github.com/blog/pkg/models"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"time"

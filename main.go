@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/blog/pkg/models"
 	"github.com/blog/pkg/setting"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -9,6 +10,7 @@ import (
 
 func init() {
 	setting.Setting()
+	models.Setup()
 }
 
 func main() {

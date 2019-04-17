@@ -1,4 +1,4 @@
-package main // import "github.com:ouyemasn/golang.git"
+package main
 
 import (
 	"./pkg/models"

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"./pkg/models"
-	"./pkg/setting"
+	"blog/pkg/models"
+	"blog/pkg/setting"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"time"

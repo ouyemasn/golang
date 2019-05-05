@@ -2,7 +2,7 @@ package models
 
 import (
 	"fmt"
-	"github.com/blog/pkg/setting"
+	"blog.com/pkg/setting"
 	"github.com/jinzhu/gorm"
 )
 

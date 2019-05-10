@@ -3,7 +3,7 @@ package main
 import (
 	"blog.com/pkg/models"
 	"blog.com/pkg/setting"
-	"github.com/gin-gonic/gin"
+	"blog.com/route"
 	"net/http"
 	"time"
 )
@@ -14,7 +14,7 @@ func init() {
 }
 
 func main() {
-	router := gin.Default()
+	router := route.InitRoute()
 
 	s := &http.Server{
 		Addr:           setting.AppSetting.Port,

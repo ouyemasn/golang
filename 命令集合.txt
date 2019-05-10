@@ -8,3 +8,7 @@ https_proxy=http://127.0.0.1:1080 git clone https://github.com/golang/lint.git $
 https_proxy=http://127.0.0.1:1080 git clone https://github.com/golang/tools.git $GOPATH/src/github.com/golang/tools
 https_proxy=http://127.0.0.1:1080 git clone https://github.com/golang/crypto.git $GOPATH/src/github.com/golang/crypto
 https_proxy=http://127.0.0.1:1080 git clone https://github.com/golang/oauth2.git $GOPATH/src/github.com/golang/oauth2
+
+https_proxy=http://127.0.0.1:1080 go get -u github.com/astaxie/beego/validation
+
+https_proxy=http://127.0.0.1:1080 env GIT_SSL_NO_VERIFY=true  go get -u github.com/astaxie/beego/validation

@@ -13,6 +13,7 @@ type DatabaseConf struct {
 	User        string
 	Password    string
 	Host        string
+	Port        string
 	Name        string
 	TablePrefix string
 }

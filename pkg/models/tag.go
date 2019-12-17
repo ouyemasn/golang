@@ -1,8 +1,6 @@
 package models
 
 import (
-	"fmt"
-
 	"github.com/jinzhu/gorm"
 )
 
@@ -13,31 +11,44 @@ type Tag struct {
 }
 
 // AddTag Add a Tag
-func AddTag(name string, state int) (bool, error) {
+func AddTag(name string) (bool, error) {
 	tag := Tag{
 		Name: name,
 	}
-	if err := db.Create(&tag).Error; err != nil {
+	if err := db.FirstOrCreate(&tag, Tag{Name: name}).Error; err != nil {
 		return false, err
 	}
 	return true, nil
 }
+
 func GetTags(pageNum int, pageSize int, maps interface{}) ([]Tag, error) {
-	var (
-		tags []Tag
-		err  error
-	)
-	fmt.Print(db == nil)
-
-	if pageSize > 0 && pageNum > 0 {
-		err = db.Where(maps).Find(tags).Offset(pageNum).Limit(pageSize).Error
-	} else {
-		err = db.Where(maps).Find(tags).Error
-	}
-
+	var tags []Tag
+	err := db.Find(&tags).Offset(pageNum).Limit(pageSize).Error
 	if err != nil && err != gorm.ErrRecordNotFound {
-		return nil, err
+		return tags, err
 	}
+	return tags, err
+}
 
-	return tags, nil
+func CheckTag(where interface{}) (bool, Tag) {
+	var tags Tag
+	err := db.Where(where).First(&tags).Error
+	if err != nil && err != gorm.ErrRecordNotFound {
+		return false, tags
+	}
+	if tags.ID > 0 {
+		return true, tags
+	}
+	return false, tags
+}
+
+func EditTags(id int, data interface{}) bool {
+	print(id)
+	err := db.Model(&Tag{}).Where("id= ?", id).Updates(data).Error
+	return err == nil
+}
+
+func DeleteTags(id int) bool {
+	err := db.Unscoped().Delete(&Tag{}, id).Error
+	return err == nil
 }

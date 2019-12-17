@@ -3,6 +3,7 @@ package models
 import (
 	"fmt"
 	"log"
+	"time"
 
 	"blog.com/pkg/setting"
 	"github.com/jinzhu/gorm"
@@ -12,8 +13,10 @@ import (
 var db *gorm.DB
 
 type Model struct {
-	gorm.Model
-	ID int `gorm:"primary_key" json:"id"`
+	ID        int `gorm:"primary_key" json:"id"`
+	CreatedAt time.Time
+	UpdatedAt time.Time
+	DeletedAt *time.Time `sql:"index"`
 }
 
 func Setup() {
@@ -32,6 +35,8 @@ func Setup() {
 
 	// 设置到数据库的最大打开连接数
 	db.DB().SetMaxOpenConns(100)
+	//开启日志
+	db.LogMode(true)
 }
 
 // CloseDB closes database connection (unnecessary)
